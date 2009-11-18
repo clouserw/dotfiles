@@ -1,0 +1,12 @@
+[user]
+	name = Wil Clouser
+	email = clouserw@gmail.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[core]
+    excludesfile = /home/clouserw/.gitignore
+[alias]
+    ci = commit
+    co = checkout
