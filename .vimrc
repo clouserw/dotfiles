@@ -1,44 +1,43 @@
 colorscheme darkblue
-set nocompatible
-set bs=2
-set background=dark
-set wrap
 syntax on
-set ruler
-set nonumber
-set expandtab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+
 set autoindent
-set showmatch
-set hls
-set incsearch
-set wildmenu
-set nowrap
-set textwidth=80
+set background=dark
+set backspace=indent,eol,start
+set bs=2
 set encoding=utf-8
+set expandtab
 set fileencoding=utf-8
-
-set ai
-set si
-set smarttab
-
 "set foldmethod=manual
 "set foldcolumn=2
+set hls
+set incsearch
+set nocompatible
+set nonumber
+set nowrap
+set ruler
+set scrolloff=3
+set shiftwidth=4
+set showmatch
+set smartindent
+set smarttab
+set softtabstop=4
+set t_Co=256
+set tabstop=4
+set textwidth=80
+"set title
+set wildmenu
+"set wrap
 
+" Multi-windowing.  CTRL+[HJKL] to switch windows and maximize
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
 map <C-H> <C-W>h<C-W><bar>
 map <C-L> <C-W>l<C-W><bar>
 
-map <Leader>hon :%!xxd<CR>
-map <Leader>hof :%!xxd -r<CR>
-
+" Multi-file.  CTRL+[NP] for next/previous file
 map <C-P> :prev<CR>
 map <C-N> :next<CR>
-
-imap <F1> <esc>
 
 " Map F5 to clear the highlighting search
 map <F5> :set hls!<bar>set hls?<CR>
