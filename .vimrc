@@ -22,7 +22,7 @@ set showmatch
 set smartindent
 set smarttab
 set softtabstop=4
-set t_Co=256
+"set t_Co=256
 set tabstop=4
 set textwidth=80
 "set title
@@ -46,7 +46,7 @@ map <F5> :set hls!<bar>set hls?<CR>
 " map <f9> :w<CR>:!php -l %<CR>
 
 " Strip trailing whitespace
-"autocmd FileType js,php,py,thtml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+autocmd BufWritePre * :%s/\s\+$//e
 
 filetype plugin indent on
 
@@ -65,7 +65,6 @@ augroup blah
     autocmd FileType php set textwidth=0
     autocmd FileType html set textwidth=0
     autocmd FileType thtml set textwidth=0
-    autocmd FileType python set textwidth=0
 
     autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4
     autocmd FileType kid setlocal tabstop=4 shiftwidth=4 softtabstop=4

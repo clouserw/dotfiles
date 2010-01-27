@@ -1,3 +1,7 @@
 Config files and such to drop in ~
 
 I stole this idea from jbalogh. <3
+
+git clone to ~/.dotfiles
+cd ~/.dotfiles
+for f in .[a-z]*; do ln -s ~/.dotfiles/$f ~/$f; done
