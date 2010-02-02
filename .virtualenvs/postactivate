@@ -1,0 +1,10 @@
+#!/bin/bash
+site_packages=$(virtualenvwrapper_get_site_packages_dir)
+
+PROJECT=`basename $VIRTUAL_ENV`
+DIR="$HOME/sandbox/$PROJECT"
+
+if [ -d $DIR ]; then
+cd $DIR
+fi
+
