@@ -22,6 +22,7 @@ set showmatch
 set smartindent
 set smarttab
 set softtabstop=4
+set t_Co=16
 "set t_Co=256
 set tabstop=4
 set textwidth=80
@@ -48,25 +49,31 @@ map <F5> :set hls!<bar>set hls?<CR>
 " Strip trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
+""" Python
+map <F8> Oimport pdb; pdb.set_trace()<Esc>
+
 filetype plugin indent on
 
 augroup blah
     au!
     au BufRead,BufNewFile *.html setfiletype php
-    au BufRead,BufNewFile *.thtml setfiletype php
+    au BufRead,BufNewFile *.thtml setfiletype htmldjango
+    au BufRead,BufNewFile *.lhtml setfiletype htmldjango
     au BufRead,BufNewFile *.module setfiletype php
     au BufRead,BufNewFile *.install setfiletype php
     au BufRead,BufNewFile *.profile setfiletype php
-
-    " For some reason the autocmd overrides above don't work, so f you virata
-    autocmd FileType virata set filetype=php
-
-    " Let html files have long lines
-    autocmd FileType php set textwidth=0
-    autocmd FileType html set textwidth=0
-    autocmd FileType thtml set textwidth=0
-
-    autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4
-    autocmd FileType kid setlocal tabstop=4 shiftwidth=4 softtabstop=4
-    autocmd FileType html setlocal textwidth=0 tabstop=2 shiftwidth=2 softtabstop=2
 augroup END
+
+" HTML has long lines and short indents
+autocmd FileType kid setlocal tabstop=4 shiftwidth=4 softtabstop=4
+autocmd FileType html setlocal textwidth=0 tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType thtml setlocal textwidth=0 tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType lhtml setlocal textwidth=0 tabstop=2 shiftwidth=2 softtabstop=2
+
+autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4
+
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4
+autocmd FileType python setlocal foldmethod=indent foldminlines=15 foldnestmax=2 foldcolumn=2
+
+" fail
+autocmd FileType virata set filetype=php
