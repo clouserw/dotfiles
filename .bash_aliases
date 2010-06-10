@@ -6,6 +6,10 @@
 export HISTIGNORE="&:ls:exit"
 export EDITOR="/usr/bin/vim"
 
+# Override the terrible bold+blue for directories
+# on a black background.  Blue is s/33/34/
+export LS_COLORS="di=01;33"
+
 # Aliases
 alias grep="grep --color"
 alias rmpyc="find . -name '*pyc' -exec rm {} \;"
@@ -13,6 +17,10 @@ alias rmpyc="find . -name '*pyc' -exec rm {} \;"
 # virtualenv stuff
 export WORKON_HOME=$HOME/.virtualenvs
 source $HOME/.virtualenvwrapper
+
+if [ -d ~/bin ]; then
+    export PATH="~/bin:$PATH"
+fi
 
 if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
