@@ -14,14 +14,19 @@ export LS_COLORS="di=01;33"
 alias grep="grep --color"
 alias rmpyc="find . -name '*pyc' -exec rm {} \;"
 
-# virtualenv stuff
-export WORKON_HOME=$HOME/.virtualenvs
-source $HOME/.virtualenvwrapper
-
 if [ -d ~/bin ]; then
     export PATH="~/bin:$PATH"
+fi
+
+# virtualenv stuff
+if [ -f ~/.virtualenvwrapper ]; then
+    export WORKON_HOME=$HOME/.virtualenvs
+    source $HOME/.virtualenvwrapper
 fi
 
 if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
 fi
+
+#function ts { date  -j -f '%s' $1
+#}
