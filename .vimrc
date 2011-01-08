@@ -52,6 +52,11 @@ autocmd BufWritePre * :%s/\s\+$//e
 """ Python
 map <F8> Oimport pdb; pdb.set_trace()<Esc>
 
+" Map Ctrl+W S to opening a new terminal
+map <C-W>s :ConqueTerm bash<CR>
+let g:ConqueTerm_ReadUnfocused = 0
+"let g:ConqueTerm_CWInsert = 0
+
 filetype plugin indent on
 
 augroup blah
