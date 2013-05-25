@@ -40,11 +40,8 @@ map <C-L> <C-W>l<C-W><bar>
 map <C-P> :prev<CR>
 map <C-N> :next<CR>
 
-" Map F5 to clear the highlighting search
-map <F5> :set hls!<bar>set hls?<CR>
-
-" PHP Syntax check
-" map <f9> :w<CR>:!php -l %<CR>
+" Map F5 to turn on spellcheck
+map <F5> :setlocal spell! spelllang=en_us <Bar> hi SpellBad cterm=underline,bold ctermfg=red ctermbg=none<CR>
 
 " Strip trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e

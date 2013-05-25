@@ -1,0 +1,11 @@
+application/pdf; pdftotext '%s' -; copiousoutput; description=PDF Document; nametemplate=%s.pdf
+
+# Images
+image/jpg; feh %s
+image/jpeg; feh %s
+image/pjpeg; feh %s
+image/png; feh %s
+image/gif; feh %s
+
+# HTML
+text/html; lynx -dump %s; nametemplate=%s.html; copiousoutput
