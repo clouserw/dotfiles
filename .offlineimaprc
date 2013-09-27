@@ -1,0 +1,32 @@
+[general]
+accounts = wclouser@mozilla.com
+status_backend = sqlite
+
+ui = quiet
+############################################################################
+[Account wclouser@mozilla.com]
+localrepository = local-wclouser@mozilla.com
+remoterepository = remote-wclouser@mozilla.com
+
+[Repository local-wclouser@mozilla.com]
+type = Maildir
+localfolders = ~/Mail/wclouser@mozilla.com
+
+[Repository remote-wclouser@mozilla.com]
+remotehost = mail.mozilla.com
+remoteuser = wclouser@mozilla.com
+remotepass =
+ssl = yes
+type = IMAP
+#folderfilter = lambda folder: folder not in ['Chats', 'Contacts', 'Emailed Contacts']
+folderfilter = lambda foldername: foldername in ['Drafts', 'INBOX', 'Sent']
+folderincludes = ['INBOX/ifwedontrememberme']
+
+[mbnames]
+enabled = yes
+filename = ~/.mutt/mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"
+

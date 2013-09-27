@@ -1,0 +1,19 @@
+
+URxvt*transparent: true
+URxvt*tintColor: DarkBlue
+URxvt*saveLines: 12000
+URxvt*foreground: White
+URxvt*background: Black
+URxvt*font: xft:Ubuntu Mono:pixelsize=14,style=Regular
+URxvt*boldFont: xft:Ubuntu Mono:pixelsize=14,style=Bold
+URxvt*letterSpace: -1
+
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: firefox
+URxvt.matcher.button: 2
+URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+
+Xft.dbi: 96
+Xft.antialias:true
+#Xft.hinting: true
+#Xft.hintstyle: hintslight

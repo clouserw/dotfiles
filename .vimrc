@@ -1,4 +1,5 @@
-colorscheme darkblue
+let g:solarized_termcolors=256
+colorscheme solarized
 syntax on
 
 set autoindent
@@ -22,8 +23,8 @@ set showmatch
 set smartindent
 set smarttab
 set softtabstop=4
-set t_Co=16
-"set t_Co=256
+"set t_Co=16
+set t_Co=256
 set tabstop=4
 set textwidth=80
 "set title

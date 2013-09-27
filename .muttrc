@@ -1,0 +1,113 @@
+set sendmail="/usr/bin/msmtp"
+
+set folder = ~/Mail/wclouser@mozilla.com
+set postponed = "+Drafts"
+set record = "+Sent"
+set spoolfile = "+INBOX"
+
+set realname = "Wil Clouser"
+set from = "wclouser@mozilla.com"
+
+set crypt_autosign=no
+set crypt_autoencrypt=no
+
+set crypt_replysign=yes
+set crypt_replysignencrypted=yes
+set crypt_verify_sig=yes
+set pgp_sign_as=0172457B
+
+# 4 hours
+set pgp_timeout=14400
+
+#source ~/.mutt/mozilla.local
+
+# ------------------------------------------------------------
+
+auto_view application/pdf
+auto_view text/html
+
+alternative_order text/plain text/enriched text/html
+
+set abort_nosubject = yes # abort message if no subject
+set confirmappend = no # don't ask when I archive something
+set delete = yes # delete messages when quitting mutt
+set edit_headers = yes # let me edit the headers
+set editor = "vim -c 'set spell spelllang=en'"
+set envelope_from = yes # tells msmtp which from to use
+set fast_reply = yes # don't prompt for receipient/subject on replies
+set forward_format = "Fwd: %s"
+set forward_quote = yes # indent fwd'd messages
+set include = yes # include message in reply
+set menu_scroll = yes # scroll 1 line, not pages
+set pager_index_lines=0 # no pager at the top
+set pager_context=0
+set pager_stop # don't advance messages automatically
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+set reply_to = yes
+set reverse_name = yes
+set send_charset = "utf-8"
+set simple_search = "~f %s | ~C %s | ~s %s" # default search in To, Cc and Subject
+set sleep_time = 0 # Don't pause between mailbox switching
+set use_from = yes
+
+unset mark_old # no need to mark mail old. read/unread is fine.
+unset markers # don't show + when wrapping lines
+unset mime_forward # forward messages inline
+
+source ~/.mutt/mutt-colors-solarized-dark-256.muttrc
+
+# Status Line
+set status_chars  = " *%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+
+# # threading preferences, sort by threads
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+set sort=threads
+set sort_aux = reverse-last-date-received
+set sort_re                                # thread based on regex
+set strict_threads=yes
+set uncollapse_jump                        # don't collapse on an unread message
+unset collapse_unread      # don't collapse threads with unread mails
+
+bind browser gg top-page
+bind browser G bottom-page
+bind browser \cb previous-page
+bind browser \cf next-page
+
+bind index \cb previous-page
+bind index \cf next-page
+
+bind index gg       first-entry
+bind index G        last-entry
+bind index R        group-reply
+bind index <tab>    sync-mailbox
+bind index <space>  collapse-thread
+bind attach <return> view-mailcap
+
+#bind pager j        next-line
+#bind pager k        previous-line
+
+bind pager gg top
+bind pager G bottom
+bind pager \ce next-line
+bind pager \cy previous-line
+bind pager R group-reply
+
+
+macro index "\ea" "<change-folder>=Archives.2013<enter>" # List Archive
+macro index "\ei" "<change-folder>=INBOX<enter>" # List Inbox
+macro index "\es" "<change-folder>=Sent<enter>" # List Sent
+
+macro index a "s+Archives.2013<enter>" # move message to archive
+
+# copy/move
+macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
+macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+
+unhdr_order     *
+hdr_order       From: To: Cc: Bcc: Date: Subject:
+
+# Address Book
+set query_command="abook --datafile='Dropbox/addressbook' --mutt-query '%s'"
+macro index A     "|abook --datafile='Dropbox/addressbook' --add-email-quiet\n" 'add sender to abook'
+macro pager A     "|abook --datafile='Dropbox/addressbook' --add-email-quiet\n" 'add sender to abook'

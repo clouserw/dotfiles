@@ -1,11 +1,12 @@
-application/pdf; pdftotext '%s' -; copiousoutput; description=PDF Document; nametemplate=%s.pdf
+#application/pdf; pdftotext '%s' -; copiousoutput; description=PDF Document; nametemplate=%s.pdf
+application/pdf; mutt_bgrun evince '%s';
 
 # Images
-image/jpg; feh %s
-image/jpeg; feh %s
-image/pjpeg; feh %s
-image/png; feh %s
-image/gif; feh %s
+image/jpg; mutt_bgrun feh %s
+image/jpeg; mutt_bgrun feh %s
+image/pjpeg; mutt_bgrun feh %s
+image/png; mutt_bgrun feh %s
+image/gif; mutt_bgrun feh %s
 
 # HTML
 text/html; lynx -dump %s; nametemplate=%s.html; copiousoutput
