@@ -57,15 +57,13 @@ let g:ConqueTerm_ReadUnfocused = 0
 
 filetype plugin indent on
 
-augroup blah
-    au!
-    au BufRead,BufNewFile *.html setfiletype php
-    au BufRead,BufNewFile *.thtml setfiletype htmldjango
-    au BufRead,BufNewFile *.lhtml setfiletype htmldjango
-    au BufRead,BufNewFile *.module setfiletype php
-    au BufRead,BufNewFile *.install setfiletype php
-    au BufRead,BufNewFile *.profile setfiletype php
-augroup END
+au BufRead,BufNewFile *.html set filetype=php
+au BufRead,BufNewFile *.thtml set filetype=htmldjango
+au BufRead,BufNewFile *.lhtml set filetype=htmldjango
+au BufRead,BufNewFile *.module set filetype=php
+au BufRead,BufNewFile *.install set filetype=php
+au BufRead,BufNewFile *.profile set filetype=php
+au BufRead,BufNewFile *.md set filetype=markdown
 
 " HTML has long lines and short indents
 autocmd FileType kid setlocal tabstop=4 shiftwidth=4 softtabstop=4
