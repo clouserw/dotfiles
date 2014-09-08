@@ -109,5 +109,20 @@ hdr_order       From: To: Cc: Bcc: Date: Subject:
 
 # Address Book
 set query_command="abook --datafile='Dropbox/addressbook' --mutt-query '%s'"
-macro index A     "|abook --datafile='Dropbox/addressbook' --add-email-quiet\n" 'add sender to abook'
-macro pager A     "|abook --datafile='Dropbox/addressbook' --add-email-quiet\n" 'add sender to abook'
+#macro index A     "|abook --datafile='Dropbox/addressbook' --add-email-quiet\n" 'add sender to abook'
+#macro pager A     "|abook --datafile='Dropbox/addressbook' --add-email-quiet\n" 'add sender to abook'
+
+# toggle alternative_order
+macro pager ,@aoh= "\
+<enter-command> unalternative_order *; \
+alternative_order text/enriched text/html text/plain text; \
+macro pager A ,@aot= 'toggle alternative order'<enter>\
+<exit><display-message>"
+#
+macro pager ,@aot= "\
+<enter-command> unalternative_order *; \
+alternative_order text/enriched text/plain text/html text; \
+macro pager A ,@aoh= 'toggle alternative order'<enter>\
+<exit><display-message>"
+#
+macro pager A ,@aot= "toggle alternative order"
