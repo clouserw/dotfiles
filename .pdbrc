@@ -1,5 +1,5 @@
 # Jump into iPython
-alias i from IPython.Shell import IPShellEmbed as IPSh; IPSh(argv='')()
+alias i from IPython import embed; embed()
 
 # Print a sorted dictionary
 alias pr for k in sorted(%1.keys()): print "%-15s= %-80.80s" % (k,repr(%1[k]))
