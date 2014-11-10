@@ -98,11 +98,18 @@ macro index "\ea" "<change-folder>=Archives.2013<enter>" # List Archive
 macro index "\ei" "<change-folder>=INBOX<enter>" # List Inbox
 macro index "\es" "<change-folder>=Sent<enter>" # List Sent
 
-macro index a "s+Archives.2013<enter>" # move message to archive
+macro index a "s+Archives.2014<enter>" # move message to archive
 
-# copy/move
-macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
-macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+set sidebar_shortpath = yes
+set sidebar_width = 24
+#set sidebar_format = "%B%* (%N)"
+color sidebar_new yellow default
+bind index \cp sidebar-prev
+bind index \cn sidebar-next
+bind index \co sidebar-open
+bind pager \cp sidebar-prev
+bind pager \cn sidebar-next
+bind pager \co sidebar-open
 
 unhdr_order     *
 hdr_order       From: To: Cc: Bcc: Date: Subject:
