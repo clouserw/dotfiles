@@ -63,7 +63,8 @@ au BufRead,BufNewFile *.lhtml set filetype=htmldjango
 au BufRead,BufNewFile *.module set filetype=php
 au BufRead,BufNewFile *.install set filetype=php
 au BufRead,BufNewFile *.profile set filetype=php
-au BufRead,BufNewFile *.md set filetype=markdown
+au BufRead,BufNewFile *.md set filetype=markdown tabstop=2 shiftwidth=2 softtabstop=2
+au BufRead,BufNewFile *.json set tabstop=2 shiftwidth=2 softtabstop=2
 
 " HTML has long lines and short indents
 autocmd FileType kid setlocal tabstop=4 shiftwidth=4 softtabstop=4
