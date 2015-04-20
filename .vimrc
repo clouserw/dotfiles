@@ -26,7 +26,7 @@ set softtabstop=4
 "set t_Co=16
 set t_Co=256
 set tabstop=4
-set textwidth=80
+set textwidth=79
 "set title
 set wildmenu
 "set wrap
