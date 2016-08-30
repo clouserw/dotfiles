@@ -18,6 +18,10 @@ if [ -d ~/bin ]; then
     export PATH="~/bin:$PATH"
 fi
 
+if [ -d ~/node_modules/.bin ]; then
+    export PATH="~/node_modules/.bin:$PATH"
+fi
+
 # virtualenv stuff
 if [ -f ~/.virtualenvwrapper ]; then
     export WORKON_HOME=$HOME/.virtualenvs

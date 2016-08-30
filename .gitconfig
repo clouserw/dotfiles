@@ -1,6 +1,6 @@
 [user]
 	name = Wil Clouser
-	email = clouserw@gmail.com
+	email = clouserw@micropipes.com
 [color]
 	diff = auto
 	status = auto
@@ -12,3 +12,5 @@
     co = checkout
 [push]
     default = matching
+[commit]
+    gpgsign = true
