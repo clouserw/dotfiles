@@ -10,9 +10,15 @@ export EDITOR="/usr/bin/vim"
 # on a black background.  Blue is s/33/34/
 export LS_COLORS="di=01;33"
 
+alias ls='ls --color=auto'
+alias la='ls -lathr'
+
 # Aliases
 alias grep="grep --color"
 alias rmpyc="find . -name '*pyc' -exec rm {} \;"
+
+alias k='kubectl'
+alias fgk='flux get kustomizations'
 
 if [ -d ~/bin ]; then
     export PATH="~/bin:$PATH"
