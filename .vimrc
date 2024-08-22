@@ -1,9 +1,19 @@
 let g:solarized_termcolors=256
+
+let g:indent_guides_enable_on_vim_startup = 1
+
+let hour = strftime("%H")
+if 8 <= hour && hour < 18
+  set background=light
+else
+  set background=dark
+endif
+
 colorscheme solarized
 syntax on
 
 set autoindent
-set background=dark
+set background=light
 set backspace=indent,eol,start
 set bs=2
 set encoding=utf-8

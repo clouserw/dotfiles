@@ -1,6 +1,7 @@
 [user]
 	name = Wil Clouser
-	email = clouserw@micropipes.com
+	email = wclouser@mozilla.com
+	signingKey = 04D1111C
 [color]
 	diff = auto
 	status = auto
@@ -13,4 +14,4 @@
 [push]
     default = matching
 [commit]
-    gpgsign = true
+	gpgsign = true
