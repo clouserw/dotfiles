@@ -5,3 +5,6 @@ I stole this idea from jbalogh. <3
 git clone to ~/.dotfiles
 cd ~/.dotfiles
 for f in .[a-z]*; do ln -s ~/.dotfiles/$f ~/$f; done
+
+
+ln -s ~/dotfiles/nvim ~/.config/nvim
