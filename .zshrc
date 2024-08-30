@@ -75,16 +75,20 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-
+#source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+#source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 
 
 # Completion
 
-eval "$(direnv hook zsh)"
+if type direnv &> /dev/null; then
+    eval "$(direnv hook zsh)"
+fi
 
-source <(flux completion zsh)
+if type flux &> /dev/null; then
+    source <(flux completion zsh)
+fi
+
 
 # Sourcing
 
@@ -92,3 +96,5 @@ source <(flux completion zsh)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+source ~/sandbox/powerlevel10k/powerlevel10k.zsh-theme
