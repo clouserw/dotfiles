@@ -36,6 +36,7 @@ export NVM_DIR="$HOME/.nvm"
 
 export PS1="%F{green}%n@%m%f:%F{red}%0~%f%# "
 
+alias v="nvim"
 alias fgk="flux get kustomizations"
 alias k="kubectl"
 alias ls='ls -G'
