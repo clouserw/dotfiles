@@ -1,7 +1,8 @@
 [user]
 	name = Wil Clouser
 	email = wclouser@mozilla.com
-	signingKey = 04D1111C
+    #signingKey = 04D1111C
+	signingKey = 69C9C9207C73946E
 [color]
 	diff = auto
 	status = auto
