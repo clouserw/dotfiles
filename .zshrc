@@ -99,3 +99,7 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 source ~/sandbox/powerlevel10k/powerlevel10k.zsh-theme
+
+source virtualenvwrapper.sh
+
+#ssh-add ~/.ssh/id_rsa.github
