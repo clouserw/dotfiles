@@ -10,6 +10,7 @@ for f in .[a-z]*; do ln -s ~/.dotfiles/$f ~/$f; done
 
 ln -s ~/dotfiles/nvim ~/.config/nvim
 
+ln -s ~/dotfiles/ghostty ~/.config/ghostty
 
 # Only OS X.  Needs a reboot
 ln -s ~/dotfiles/KeyBindings ~/Library/KeyBindings
