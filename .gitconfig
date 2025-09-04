@@ -18,3 +18,7 @@
 	gpgsign = true
 [gpg]
 	program = /opt/homebrew/bin/gpg
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
