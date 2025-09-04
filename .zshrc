@@ -6,6 +6,7 @@ SAVEHIST=100000
 
 setopt HIST_IGNORE_SPACE  # Don't save when prefixed with space
 setopt HIST_IGNORE_DUPS   # Don't save duplicate lines
+setopt NOAUTOMENU # Just show a list when I hit tab
 
 alias rsync='noglob rsync'
 alias scp='noglob scp'
@@ -19,6 +20,8 @@ alias enablehistory="unset -f zshaddhistory"
 
 export GPG_TTY=$TTY
 
+autoload -Uz compinit
+compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/.zcompdump"
 
 # --- PROMPT ---
 #
@@ -35,8 +38,11 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 export PS1='%F{green}%n@%m%f:%F{red}%0~%f${VIRTUAL_ENV:+($VIRTUAL_ENV:h:t)} %# '
 
 
-
 # --- Tools ---
+#
+#
+# only in interactive shells, and only if atuin exists
+[[ -o interactive ]] && (( $+commands[atuin] )) && eval "$(atuin init zsh --disable-up-arrow)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
