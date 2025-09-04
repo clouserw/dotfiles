@@ -1,15 +1,4 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-
-
-
-export CLICOLOR=1
-export LS_COLORS="di=01;33"
+# Runs for all shells, after .zprofile
 
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
@@ -17,42 +6,41 @@ SAVEHIST=100000
 
 setopt HIST_IGNORE_SPACE  # Don't save when prefixed with space
 setopt HIST_IGNORE_DUPS   # Don't save duplicate lines
-#setopt SHARE_HISTORY      # Share history between sessions
-
-
-
-if [ -d $HOME/bin ]; then
-    export PATH="$HOME/bin:$PATH"
-fi
-export PATH="/usr/local/bin:$PATH"
-
 
 alias rsync='noglob rsync'
 alias scp='noglob scp'
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export PS1="%F{green}%n@%m%f:%F{red}%0~%f%# "
-
 alias v="nvim"
 alias fgk="flux get kustomizations"
 alias k="kubectl"
 alias ls='ls -G'
 alias ll='ls -lG'
-
-export GPG_TTY=$(tty)
-
-export DISPLAY=":0"
-
 alias disablehistory="function zshaddhistory() {  return 1 }"
 alias enablehistory="unset -f zshaddhistory"
 
-export WORKON_HOME="$HOME/.virtualenvs"
-export VIRTUALENVWRAPPER_PYTHON="/opt/homebrew/bin/python3"
-export VIRTUALENVWRAPPER_VIRTUALENV="/opt/homebrew/bin/virtualenv"
-#source /opt/homebrew/bin/virtualenvwrapper.sh
+export GPG_TTY=$TTY
+
+
+# --- PROMPT ---
+#
+# Let zsh run ${...} inside PROMPT
+setopt PROMPT_SUBST
+
+# Stop Python's activate from adding its own (venv) prefix
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+# Show "(parentdir)" only when a venv is active
+# ${VIRTUAL_ENV:+...} => expand the ... only if VIRTUAL_ENV is set
+# $VIRTUAL_ENV:h     => head (dirname)
+# :t                 => tail (basename)
+export PS1='%F{green}%n@%m%f:%F{red}%0~%f${VIRTUAL_ENV:+($VIRTUAL_ENV:h:t)} %# '
+
+
+
+# --- Tools ---
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 autoload -U add-zsh-hook
 load-nvmrc() {
@@ -76,30 +64,18 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-#source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-#source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-
 
 # Completion
-
-if type direnv &> /dev/null; then
-    eval "$(direnv hook zsh)"
-fi
-
-if type flux &> /dev/null; then
-    source <(flux completion zsh)
-fi
+if (( ${+commands[direnv]} )); then emulate zsh -c "$(direnv hook zsh)"; fi
+if (( ${+commands[flux]} )); then source <(flux completion zsh); fi
 
 
-# Sourcing
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc'; fi
 
+# The next line enables shell command completion for gcloud.
+if [ -f '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Source anything private.  Note that .zlogin would still run after this
 [[ ! -f ~/.privaterc ]] || source ~/.privaterc
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-source ~/sandbox/powerlevel10k/powerlevel10k.zsh-theme
-
-source virtualenvwrapper.sh
-
-#ssh-add ~/.ssh/id_rsa.github
