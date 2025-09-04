@@ -12,4 +12,3 @@ export NVM_DIR="$HOME/.nvm"
 # --- Misc ---
 export CLICOLOR=1
 export DISPLAY=":0"
-export LSCOLORS="di=01;33"
