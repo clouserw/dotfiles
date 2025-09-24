@@ -13,4 +13,4 @@ ln -s ~/dotfiles/nvim ~/.config/nvim
 ln -s ~/dotfiles/ghostty ~/.config/ghostty
 
 # Only OS X.  Needs a reboot
-ln -s ~/dotfiles/KeyBindings ~/Library/KeyBindings
+ln -s ~/dotfiles/KeyBindings/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict

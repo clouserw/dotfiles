@@ -10,7 +10,10 @@ setopt NOAUTOMENU # Just show a list when I hit tab
 
 alias rsync='noglob rsync'
 alias scp='noglob scp'
-alias v="nvim"
+alias vi="nvim"
+alias vim="nvim"
+alias vd="nvim -d"
+alias vimdiff="nvim -d"
 alias fgk="flux get kustomizations"
 alias k="kubectl"
 alias ls='ls -G'
@@ -18,6 +21,7 @@ alias ll='ls -lG'
 alias disablehistory="function zshaddhistory() {  return 1 }"
 alias enablehistory="unset -f zshaddhistory"
 
+export EDITOR="nvim"
 export GPG_TTY=$TTY
 
 autoload -Uz compinit
