@@ -3,12 +3,16 @@
 	email = wclouser@mozilla.com
     #signingKey = 04D1111C
 	signingKey = 69C9C9207C73946E
+
+[include]
+  path = ~/.gitconfig-mozilla
+
 [color]
 	diff = auto
 	status = auto
 	branch = auto
 [core]
-    excludesfile = /home/clouserw/.gitignore
+    excludesfile = ~/.gitignore
 [alias]
     ci = commit
     co = checkout
