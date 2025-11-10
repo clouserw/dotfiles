@@ -1,9 +1,9 @@
 [user]
 	name = Wil Clouser
-	email = wclouser@mozilla.com
-    #signingKey = 04D1111C
-	signingKey = 69C9C9207C73946E
+	email = clouserw@micropipes.com
+  signingKey = FC29BB4EC732B90D
 
+# If this file exists, it overrides my email/key for Mozilla
 [include]
   path = ~/.gitconfig-mozilla
 
