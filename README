@@ -8,9 +8,12 @@ cd ~/.dotfiles
 for f in .[a-z]*; do ln -s ~/.dotfiles/$f ~/$f; done
 
 
-ln -s ~/dotfiles/nvim ~/.config/nvim
+ln -s ~/.dotfiles/nvim ~/.config/nvim
 
-ln -s ~/dotfiles/ghostty ~/.config/ghostty
+ln -s ~/.dotfiles/ghostty ~/.config/ghostty
 
 # Only OS X.  Needs a reboot
-ln -s ~/dotfiles/KeyBindings/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
+ln -s ~/.dotfiles/KeyBindings ~/Library/KeyBindings
+
+# control+cmd+click to move window
+defaults write -g NSWindowShouldDragOnGesture -bool true
