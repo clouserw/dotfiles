@@ -1,2 +1,5 @@
 window-height = 30
 window-width = 220
+
+working-directory = home
+window-inherit-working-directory = false
