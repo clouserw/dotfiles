@@ -89,6 +89,8 @@ if [ -f '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/op
 export NVM_DIR="$HOME/.nvm"
 source "$(brew --prefix nvm)/nvm.sh"
 
+eval "$(direnv hook zsh)"
+
 # Source anything private.  Note that .zlogin would still run after this
 [[ ! -f ~/.privaterc ]] || source ~/.privaterc
 
