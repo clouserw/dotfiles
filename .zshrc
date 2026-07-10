@@ -86,6 +86,9 @@ if [ -f '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/home
 # The next line enables shell command completion for gcloud.
 if [ -f '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc'; fi
 
+# Add Go binaries to PATH.
+if (( ${+commands[go]} )) && [ -d "$(go env GOPATH)/bin" ]; then export PATH="$PATH:$(go env GOPATH)/bin"; fi
+
 export NVM_DIR="$HOME/.nvm"
 source "$(brew --prefix nvm)/nvm.sh"
 
