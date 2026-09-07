@@ -16,6 +16,7 @@ return {
             trigger_characters = { ":", "#", "^", '"', " " },
           },
         }
+        opts.complete_payee_narration = false
         return opts
       end,
     },
