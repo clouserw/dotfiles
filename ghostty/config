@@ -4,4 +4,4 @@ window-width = 220
 working-directory = home
 window-inherit-working-directory = false
 
-font-size = 11
+font-size = 10
