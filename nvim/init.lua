@@ -12,3 +12,9 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.foldmethod = "marker"
   end,
 })
+
+-- disable the mouse
+vim.opt.mouse = ""
+
+-- stop just sticking modified buffers into the background until we close vim.  Let's get it taken care of right away, huh?
+vim.opt.hidden = false

@@ -24,14 +24,15 @@ return {
       "L3MON4D3/LuaSnip",
     },
   },
-  --# config = function()
-  --#   require("beancount").setup({})
-  --#   -- Treesitter setup
-  --#  ; require("nvim-treesitter.configs").setup({
-  --#     ensure_installed = { "beancount" },
-  --#     highlight = { enable = true },
-  --#     incremental_selection = { enable = true },
-  --#     indent = { enable = true },
-  --#   })
-  --# end,
+  config = function()
+    require("beancount").setup({
+      --#   -- Treesitter setup
+      --#  ; require("nvim-treesitter.configs").setup({
+      --#     ensure_installed = { "beancount" },
+      --#     highlight = { enable = true },
+      --#     incremental_selection = { enable = true },
+      --#     indent = { enable = true },
+      --inlay_hints = false,
+    })
+  end,
 }

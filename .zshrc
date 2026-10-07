@@ -7,6 +7,7 @@ SAVEHIST=100000
 setopt HIST_IGNORE_SPACE  # Don't save when prefixed with space
 setopt HIST_IGNORE_DUPS   # Don't save duplicate lines
 setopt NOAUTOMENU # Just show a list when I hit tab
+setopt EXTENDED_GLOB
 
 alias rsync='noglob rsync'
 alias scp='noglob scp'
@@ -24,8 +25,15 @@ alias enablehistory="unset -f zshaddhistory"
 export EDITOR="nvim"
 export GPG_TTY=$TTY
 
+zcompdump_file="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/.zcompdump"
 autoload -Uz compinit
-compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/.zcompdump"
+# Check if the file exists and was modified within the last 24 hours (-24)
+# We use (.nN) to ensure it's a file (.), non-empty (n), and doesn't error if not found (N)
+if [[ -n $zcompdump_file(#qNmh-24) ]]; then
+  compinit -C -d "$zcompdump_file"
+else
+  compinit -d "$zcompdump_file"
+fi
 
 # --- PROMPT ---
 #
@@ -49,8 +57,12 @@ export PS1='%F{green}%n@%m%f:%F{red}%0~%f${VIRTUAL_ENV:+($VIRTUAL_ENV:h:t)} %# '
 [[ -o interactive ]] && (( $+commands[atuin] )) && eval "$(atuin init zsh --disable-up-arrow)"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+nvm() {
+  unset -f nvm
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  nvm "$@"
+}
 
 autoload -U add-zsh-hook
 load-nvmrc() {
@@ -88,9 +100,6 @@ if [ -f '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/op
 
 # Add Go binaries to PATH.
 if (( ${+commands[go]} )) && [ -d "$(go env GOPATH)/bin" ]; then export PATH="$PATH:$(go env GOPATH)/bin"; fi
-
-export NVM_DIR="$HOME/.nvm"
-source "$(brew --prefix nvm)/nvm.sh"
 
 eval "$(direnv hook zsh)"
 
