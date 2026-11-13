@@ -1,7 +1,7 @@
 [user]
 	name = Wil Clouser
 	email = clouserw@micropipes.com
-  signingKey = FC29BB4EC732B90D
+  signingKey = 4EEEB0E7EE21BDCC
 
 # If this file exists, it overrides my email/key for Mozilla
 [include]
@@ -28,3 +28,5 @@
 	prompt = false
 [pull]
 	rebase = true
+[tag]
+	gpgsign = true
