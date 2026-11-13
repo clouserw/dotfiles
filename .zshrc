@@ -25,6 +25,13 @@ alias enablehistory="unset -f zshaddhistory"
 export EDITOR="nvim"
 export GPG_TTY=$TTY
 
+# Required only on OS X to use ssh keys on yubikey
+_sk_provider="$(brew --prefix openssh-sk-provider 2>/dev/null)/lib/sk-libfido2.dylib"
+if [[ -f "$_sk_provider" ]]; then
+    export SSH_SK_PROVIDER="$_sk_provider"
+fi
+unset _sk_provider
+
 zcompdump_file="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/.zcompdump"
 autoload -Uz compinit
 # Check if the file exists and was modified within the last 24 hours (-24)
