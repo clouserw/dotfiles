@@ -64,16 +64,11 @@ export PS1='%F{green}%n@%m%f:%F{red}%0~%f${VIRTUAL_ENV:+($VIRTUAL_ENV:h:t)} %# '
 [[ -o interactive ]] && (( $+commands[atuin] )) && eval "$(atuin init zsh --disable-up-arrow)"
 
 export NVM_DIR="$HOME/.nvm"
-nvm() {
-  unset -f nvm
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-  nvm "$@"
-}
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 autoload -U add-zsh-hook
 load-nvmrc() {
-  [[ -a .nvmrc ]] || return
   local node_version="$(nvm version)"
   local nvmrc_path="$(nvm_find_nvmrc)"
 
